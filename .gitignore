@@ -1,9 +1,9 @@
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/Assets/AssetStoreTools*
+/BunnyBall_VR/[Ll]ibrary/
+/BunnyBall_VR/[Tt]emp/
+/BunnyBall_VR/[Oo]bj/
+/BunnyBall_VR/[Bb]uild/
+/BunnyBall_VR/[Bb]uilds/
+/BunnyBall_VR/Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -32,3 +32,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+
