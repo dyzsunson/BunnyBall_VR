@@ -3,7 +3,7 @@
         _Color ("Color", Color) = (1,1,1,1)
     }
     SubShader {
-        Tags { "Queue"="Transparency" }
+        Tags { "Queue"="Transparent" }
         LOD 200
         ZTest Always
         Cull Off

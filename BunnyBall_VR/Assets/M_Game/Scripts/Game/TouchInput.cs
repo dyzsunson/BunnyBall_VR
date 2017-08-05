@@ -44,7 +44,13 @@ public class TouchInput : MonoBehaviour {
 
         }
         else if (SceneController.context.Current_State == SceneController.SceneState.End) {
+            // if (OVRInput.GetUp(OVRInput.RawButton.A)) {
+            //     SceneController.context.RestartGame(InputCtrl.context.Is_AI_Ctrl);
+            // }
 
+            if (OVRInput.GetUp(OVRInput.RawButton.B)) {
+                SceneController.context.ReStartScene();
+            }
         }
     }
 }

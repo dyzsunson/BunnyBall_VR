@@ -31,6 +31,7 @@ public class Level : MonoBehaviour {
     }
 
     public void GameEnd() {
+        HandObj.SetActive(false);
         rabbit.GameEnd();
     }
 }

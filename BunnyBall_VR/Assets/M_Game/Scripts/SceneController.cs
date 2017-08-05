@@ -80,6 +80,14 @@ public class SceneController : MonoBehaviour {
         m_state = SceneState.Preparing;
         s_currentLevel = NotChanged.context.Level_Current;
         LevelChange(0);
+
+        if (NotChanged.context.is_auto_start == true) {
+            if (NotChanged.context.is_single_player == true)
+                Start_SinglePlayer();
+            else
+                Start_MultiPlayer();
+        }
+        NotChanged.context.is_auto_start = false;
      }
 	
 	// Update is called once per frame
@@ -192,6 +200,12 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadScene(0);
     }
 
+    public void RestartGame(bool _is_single_player) {
+        NotChanged.context.is_auto_start = true;
+        NotChanged.context.is_single_player = _is_single_player;
+        ReStartScene();
+    }
+
     public void ShowTutorial() {
         if (m_state == SceneState.Preparing) {
             this.ui_controller.ShowTutorial();
@@ -259,8 +273,14 @@ public class SceneController : MonoBehaviour {
         if (InputCtrl.context.Is_AI_Ctrl)
             SceneController.AI_Current.GameEnd();
 
+        TouchObj.SetActive(true);
+        LeftTouchObj.SetActive(true);
+        RightTouchObj.SetActive(true);
+
         this.ui_controller.GameEnd();
-        
+
+        this.levelList[s_currentLevel].GameEnd();
+
         // score
         ScoreCalculate();
         this.GetComponent<AudioSource>().Play();
