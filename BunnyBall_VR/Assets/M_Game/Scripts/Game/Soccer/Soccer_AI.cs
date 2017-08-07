@@ -27,8 +27,8 @@ public class Soccer_AI : RabbitAI {
         if (angle > 180.0f)
             angle -= 360.0f;
 
-        float curveTime = Random.Range(0.0f, 0.5f); // Mathf.Abs(angle) / m_y_rotateRange * 2.0f
-
+        float t_min = 0.0f, t_max = 0.5f;
+        
         if (angle < -5.0f)
             IsRightHold = true;
         else if (angle > 5.0f)
@@ -37,6 +37,11 @@ public class Soccer_AI : RabbitAI {
             IsLeftHold = true;
         else
             IsRightHold = true;
+
+        if (angle > 7.5f || angle < -0.75f)
+            t_min = 0.3f;
+
+        float curveTime = Random.Range(t_min, t_max); // Mathf.Abs(angle) / m_y_rotateRange * 2.0f
 
         Invoke("CurveEnd", Mathf.Min(curveTime, t));
         // Invoke("PowerEnd", t);

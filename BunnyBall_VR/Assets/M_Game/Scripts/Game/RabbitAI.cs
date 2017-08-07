@@ -16,11 +16,16 @@ public class RabbitAI : MonoBehaviour {
     protected float[] power = { 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f };
     protected int m_current = 0;
 
+    // rotate variable
     protected float m_rotate_a = 250.0f;
     protected float m_max_speed = 50.0f;
 
     protected float m_y_rotateRange = 10.0f;
     protected float m_x_rotateRange = 5.0f;
+
+    // fire variable
+    protected float m_fire_min = 0.3f;
+    protected float m_fire_max = 0.75f;
 
     // private float m_y_rotate_a = 250.0f;
     // private float m_y_max_speed = 50.0f;
@@ -214,9 +219,6 @@ public class RabbitAI : MonoBehaviour {
     }
 
     protected virtual float GetFireTime() {
-        float low = 0.4f;
-        float high = 0.75f;
-
         float degree = SceneController.Rabbit_Current.ShootCtrl.GunBodyTransform.rotation.eulerAngles.x;
         if (degree > 180.0f)
             degree -= 360.0f;
@@ -226,10 +228,15 @@ public class RabbitAI : MonoBehaviour {
         if (degree < -5.0f)
             degree = -5.0f;
 
+        float low = m_fire_min;
+        float high = m_fire_max;
+
+        float diff = m_fire_max - m_fire_min;
         if (degree < 0.0f)
-            high -= 0.25f * (-degree) / 5.0f;
+            high -= diff * (-degree) / 5.0f;
         else
-            low += 0.2f * (degree) / 5.0f;
+            low += 0.5f * diff * (degree) / 5.0f;
+
 
         return Random.Range(low, high);
     }
