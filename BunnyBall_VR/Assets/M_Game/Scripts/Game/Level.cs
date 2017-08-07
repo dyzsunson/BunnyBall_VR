@@ -22,7 +22,7 @@ public class Level : MonoBehaviour {
 	}
 
     public void GameReady() {
-        HandObj.SetActive(true);
+        // HandObj.SetActive(true);
         rabbit.GameReady();
     }
 
@@ -31,7 +31,7 @@ public class Level : MonoBehaviour {
     }
 
     public void GameEnd() {
-        HandObj.SetActive(false);
+        // HandObj.SetActive(false);
         rabbit.GameEnd();
     }
 }

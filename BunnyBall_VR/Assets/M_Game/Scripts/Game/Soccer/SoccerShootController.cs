@@ -6,6 +6,7 @@ public class SoccerShootController : ShootController {
     
 
     float m_curve_power = 0.0f;
+    float m_max_curve_power = 1.2f;
 
     public GameObject Curve_UI;
     public Power_Curve power_curve;
@@ -44,14 +45,14 @@ public class SoccerShootController : ShootController {
                 if (InputCtrl.IsRightButton)
                     m_curve_power += 3.0f * Time.deltaTime;
 
-                if (m_curve_power > 1.0f)
-                    m_curve_power = 1.0f;
-                if (m_curve_power < -1.0f)
-                    m_curve_power = -1.0f;
+                if (m_curve_power > m_max_curve_power)
+                    m_curve_power = m_max_curve_power;
+                if (m_curve_power < -m_max_curve_power)
+                    m_curve_power = -m_max_curve_power;
             }
-            m_curve_ui_cursor.localPosition = new Vector3(m_curve_power * 25.0f, 0.0f, 0.0f);           
+            m_curve_ui_cursor.localPosition = new Vector3(m_curve_power * 20.0f, 0.0f, 0.0f);           
         }
-        power_curve.SetPowerAndCurve(m_power - m_min_power, m_max_power - m_min_power, m_curve_power, 1.0f);
+        power_curve.SetPowerAndCurve(m_power - m_min_power, m_max_power - m_min_power, m_curve_power, m_max_curve_power);
     }
 
     protected override void Reloading() {

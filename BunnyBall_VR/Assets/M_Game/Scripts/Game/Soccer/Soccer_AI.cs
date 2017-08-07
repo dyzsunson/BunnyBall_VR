@@ -8,7 +8,10 @@ public class Soccer_AI : RabbitAI {
         m_fire_wait_minTime = 2.0f;
         m_fire_wait_maxTime = 2.5f;
 
-        m_x_rotateRange = 15.0f;
+        m_fire_min = 0.35f;
+
+        m_y_rotateRange = 20.0f;
+        m_x_rotateRange = 10.0f;
     }
 
     protected override void Fire() {
@@ -38,8 +41,10 @@ public class Soccer_AI : RabbitAI {
         else
             IsRightHold = true;
 
-        if (angle > 7.5f || angle < -0.75f)
+        if (angle > 7.5f || angle < -7.5f)
             t_min = 0.3f;
+        else if ((angle < 0.0f && IsLeftHold == true) || (angle > 0.0f && IsRightHold == true))
+            t_max = 0.2f;
 
         float curveTime = Random.Range(t_min, t_max); // Mathf.Abs(angle) / m_y_rotateRange * 2.0f
 

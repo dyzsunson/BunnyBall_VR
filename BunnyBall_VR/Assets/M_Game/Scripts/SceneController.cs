@@ -229,24 +229,45 @@ public class SceneController : MonoBehaviour {
             this.LevelChange(-1);
         }
     }
+
+    public void ShowTouchObj() {
+        TouchObj.SetActive(true);
+        LeftTouchObj.SetActive(true);
+        RightTouchObj.SetActive(true);
+
+        this.levelList[s_currentLevel].HandObj.SetActive(false);
+    }
+
+    public void ShowGameHandObj() {
+        TouchObj.SetActive(false);
+        LeftTouchObj.SetActive(false);
+        RightTouchObj.SetActive(false);
+
+        this.levelList[s_currentLevel].HandObj.SetActive(true);
+    }
+
+    public void ShowTouchObj(float _time) {
+        Invoke("ShowTouchObj", _time);
+    }
+
     #endregion
 
 
-#region private support functions
+    #region private support functions
     void GameReady() {
         m_time = gameTime;
         m_state = SceneState.Waiting;
 
-        TouchObj.SetActive(false);
-        LeftTouchObj.SetActive(false);
-        RightTouchObj.SetActive(false);
-        RoamingCameraObj.SetActive(false);
+        this.ShowGameHandObj();
 
         this.ui_controller.GameReady();
+        RoamingCameraObj.SetActive(false);
 
         this.levelList[s_currentLevel].GameReady();
         ResetCamera();
     }
+
+    
 
     void GameStart() {
         TimeText.gameObject.SetActive(true);
@@ -273,9 +294,7 @@ public class SceneController : MonoBehaviour {
         if (InputCtrl.context.Is_AI_Ctrl)
             SceneController.AI_Current.GameEnd();
 
-        TouchObj.SetActive(true);
-        LeftTouchObj.SetActive(true);
-        RightTouchObj.SetActive(true);
+        this.ShowTouchObj(1.0f);
 
         this.ui_controller.GameEnd();
 
