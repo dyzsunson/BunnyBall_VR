@@ -294,7 +294,7 @@ public class SceneController : MonoBehaviour {
         if (InputCtrl.context.Is_AI_Ctrl)
             SceneController.AI_Current.GameEnd();
 
-        this.ShowTouchObj(1.0f);
+        this.ShowTouchObj(2.0f);
 
         this.ui_controller.GameEnd();
 
