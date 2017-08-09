@@ -153,11 +153,13 @@ public class UI_Controller : MonoBehaviour {
         TutorialMenu.SetActive(false);
     }
 
-    public void LevelChange(string _name, Sprite _sprite) {
-        LevelText.text = _name;
-        LevelIcon.sprite = _sprite;
+    public void LevelChange(Level _previous, Level _level) {
+        LevelText.text = LevelText_VR.text = _level.LevelName;
+        LevelIcon.sprite = LevelIcon_VR.sprite = _level.LevelIcon;
 
-        LevelText_VR.text = _name;
-        LevelIcon_VR.sprite = _sprite;
+        if (_previous != null)
+            _previous.TutorialObj.SetActive(false);
+
+        _level.TutorialObj.SetActive(true);
     }
 }

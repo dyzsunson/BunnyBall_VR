@@ -7,6 +7,7 @@ public class Level : MonoBehaviour {
     public GameObject GoalObj;
     public RabbitAI AI;
     public GameObject HandObj;
+    public GameObject TutorialObj;
 
     public Sprite LevelIcon;
     public string LevelName;

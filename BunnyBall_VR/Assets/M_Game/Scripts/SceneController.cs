@@ -310,13 +310,15 @@ public class SceneController : MonoBehaviour {
     }
 
     private void LevelChange(int _offset) {
+        int previous_level = s_currentLevel;
+
         levelList[s_currentLevel].gameObject.SetActive(false);
         s_currentLevel = (s_currentLevel + _offset + levelList.Length) % levelList.Length;
         levelList[s_currentLevel].gameObject.SetActive(true);
 
         NotChanged.context.Level_Current = s_currentLevel;
 
-        this.ui_controller.LevelChange(levelList[s_currentLevel].LevelName, levelList[s_currentLevel].LevelIcon);
+        this.ui_controller.LevelChange(levelList[previous_level], levelList[s_currentLevel]);
     }
 }
 #endregion 
