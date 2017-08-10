@@ -41,20 +41,22 @@ public class ScoreCalculation : MonoBehaviour {
     }
 
     protected void Calculate(int[] _scoreArray, string[] _names) {
-        string filePath = "Record/" + m_levelName + "score.txt";
-        if (!Directory.Exists("Record")) {
-            Directory.CreateDirectory("Record");
+        string path_name = "BunnyBall_Data/Record/";
+        string file_name = m_levelName + "_score.txt";
+  
+        if (!Directory.Exists(path_name)) {
+            Directory.CreateDirectory(path_name);
         }
 
         bool isNew = false;
         string fileTxt = "";
 
-        if (!File.Exists(filePath)) {
-            File.Create(filePath).Dispose(); ;
+        if (!File.Exists(path_name + file_name)) {
+            File.Create(path_name + file_name).Dispose(); ;
             isNew = true;
         }
 
-        string[] lines = File.ReadAllLines(filePath);
+        string[] lines = File.ReadAllLines(path_name + file_name);
         string todayStr = DateTime.Today.ToString("yyyyMMdd");
 
         if (lines.Length == 0)
@@ -92,7 +94,7 @@ public class ScoreCalculation : MonoBehaviour {
             recordStr += "\r\n";
         }
 
-        File.WriteAllText(filePath, fileTxt);
+        File.WriteAllText(path_name + file_name, fileTxt);
 
         ScoreTextVR.text = ScoreText.text = "";
         for (int i = 0; i < _scoreArray.Length; i++) {
