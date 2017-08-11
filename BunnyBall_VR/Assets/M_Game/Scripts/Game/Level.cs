@@ -11,6 +11,7 @@ public class Level : MonoBehaviour {
 
     public Sprite LevelIcon;
     public string LevelName;
+    public string LevelDescription;
 
 	// Use this for initialization
 	void Start () {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     public GameObject BubblePrefab;
 
-    float m_lifeTime = 5.0f;
+    protected float m_lifeTime = 5.0f;
     float m_bottom = 0.0f;
 
     bool is_inWater = false;
@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour {
         }
 	}
 
-    void End() {
+    protected virtual void End() {
         Destroy(this.gameObject);
     }
 }

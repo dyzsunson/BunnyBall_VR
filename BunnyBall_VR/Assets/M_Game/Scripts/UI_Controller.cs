@@ -37,6 +37,7 @@ public class UI_Controller : MonoBehaviour {
     Image LevelIcon;
 
     Text LevelText_VR;
+    Text LevelDescription_Text_VR;
     Image LevelIcon_VR;
     #endregion
 
@@ -59,6 +60,7 @@ public class UI_Controller : MonoBehaviour {
 
         LevelText_VR = StartMenuVR.transform.Find("Level/LevelText").GetComponent<Text>();
         LevelIcon_VR = StartMenuVR.transform.Find("Level/Icon").GetComponent<Image>();
+        LevelDescription_Text_VR = StartMenuVR.transform.Find("Level/Level_Description").GetComponent<Text>();
     }
 
     // Use this for initialization
@@ -155,6 +157,8 @@ public class UI_Controller : MonoBehaviour {
 
     public void LevelChange(Level _previous, Level _level) {
         LevelText.text = LevelText_VR.text = _level.LevelName;
+        LevelDescription_Text_VR.text = _level.LevelDescription;
+
         LevelIcon.sprite = LevelIcon_VR.sprite = _level.LevelIcon;
 
         if (_previous != null)

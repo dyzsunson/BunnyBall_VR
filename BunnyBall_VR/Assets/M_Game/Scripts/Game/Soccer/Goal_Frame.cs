@@ -15,7 +15,6 @@ public class Goal_Frame : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        print(collision.gameObject.name);
         if (collision.gameObject.tag == "Soccer") {
             this.GetComponent<AudioSource>().Play();
         }

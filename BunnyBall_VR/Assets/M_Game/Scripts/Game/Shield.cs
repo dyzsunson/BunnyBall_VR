@@ -22,7 +22,10 @@ public class Shield : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if ((collision.gameObject.tag == "Bullet") || (collision.gameObject.tag == "BigBullet") || collision.gameObject.tag == "Soccer") {
+        if ((collision.gameObject.tag == "Bullet") || (collision.gameObject.tag == "BigBullet") || collision.gameObject.tag == "Soccer" || collision.gameObject.tag == "VolleyBall") {
+            //if (collision.gameObject.tag == "VolleyBall")
+            //  collision.transform.GetComponent<Rigidbody>().velocity *= 1.2f;
+
             this.GetComponent<AudioSource>().Play();
 
             if (collision.gameObject.tag == "BigBullet") {
