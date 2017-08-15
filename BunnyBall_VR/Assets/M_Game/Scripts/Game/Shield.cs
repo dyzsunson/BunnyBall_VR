@@ -22,7 +22,7 @@ public class Shield : MonoBehaviour {
             }
         }
 
-        m_velocity = (this.transform.position - m_lastPosition) / Time.deltaTime;
+        m_velocity = m_velocity * 0.5f + 0.5f *  (this.transform.position - m_lastPosition) / Time.deltaTime;
         m_lastPosition = this.transform.position;
     }
 

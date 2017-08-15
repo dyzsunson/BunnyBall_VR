@@ -32,7 +32,12 @@ public class SceneController : MonoBehaviour {
             return this.m_state;
         }
     }
-    private float m_waitTime = 5.0f;
+    private float m_waitTime = 10.0f;
+    public float ReadyWaitTime {
+        get {
+            return this.m_waitTime;
+        }
+    }
 
     private bool is_vr_ready = false;
     private bool is_pc_ready = false;

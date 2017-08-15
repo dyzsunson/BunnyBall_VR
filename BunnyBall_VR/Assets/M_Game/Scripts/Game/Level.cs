@@ -8,6 +8,7 @@ public class Level : MonoBehaviour {
     public RabbitAI AI;
     public GameObject HandObj;
     public GameObject TutorialObj;
+    public GameObject GameTutorial;
 
     public Sprite LevelIcon;
     public string LevelName;
@@ -26,10 +27,27 @@ public class Level : MonoBehaviour {
     public void GameReady() {
         // HandObj.SetActive(true);
         rabbit.GameReady();
+
+        if (GameTutorial != null) {
+            GameTutorial.SetActive(true);
+            GameTutorial.GetComponent<FadeInOut>().FadeIn(1.0f);
+        }
+        Invoke("HideTutorial", SceneController.context.ReadyWaitTime - 5.0f);
     }
 
     public void GameStart() {
         rabbit.GameStart();
+
+        if (GameTutorial != null)
+            GameTutorial.SetActive(false);
+    }
+
+    void ShowTutorial() {
+        
+    }
+
+    void HideTutorial() {
+        GameTutorial.GetComponent<FadeInOut>().FadeOut(2.0f);
     }
 
     public void GameEnd() {

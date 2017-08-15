@@ -19,7 +19,7 @@ public class Volley_Shoot_Controller : ShootController  {
 
         m_basket_current = Random.Range(0, basketArray.Length);
         ball.GetComponent<Volley_Ball>().Basket_ID = m_basket_current;
-        Invoke("HighLightBasket", 1.0f);
+        Invoke("HighLightBasket", 0.5f);
 
         this.transform.parent.GetComponent<Rabbit>().Fire();
         return ball;
@@ -29,7 +29,7 @@ public class Volley_Shoot_Controller : ShootController  {
         foreach (Volley_Basket basket in basketArray)
             basket.WrongBasket();
         basketArray[m_basket_current].RightBasket();
-        Invoke("DeHighLightBasket", 2.0f);
+        Invoke("DeHighLightBasket", 2.5f);
     }
 
     void DeHighLightBasket() {
@@ -45,5 +45,10 @@ public class Volley_Shoot_Controller : ShootController  {
         else {
             GunBodyTransform.Translate(m_reload_gun_speed * Time.deltaTime * new Vector3(0.0f, 0.0f, 1.0f));
         }
+    }
+
+    public override void GameStart() {
+        base.GameStart();
+        DeHighLightBasket();
     }
 }
