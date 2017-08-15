@@ -5,10 +5,12 @@ using UnityEngine;
 public class Shield : MonoBehaviour {
     float r_time = 0.0f;
     public OVRInput.Controller controller;
+    Vector3 m_velocity = Vector3.zero;
+    Vector3 m_lastPosition;
 
     // Use this for initialization
     void Start () {
-		
+        m_lastPosition = this.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -19,12 +21,19 @@ public class Shield : MonoBehaviour {
                 OVRInput.SetControllerVibration(0.0f, 0.0f, controller);
             }
         }
+
+        m_velocity = (this.transform.position - m_lastPosition) / Time.deltaTime;
+        m_lastPosition = this.transform.position;
     }
 
     private void OnCollisionEnter(Collision collision) {
         if ((collision.gameObject.tag == "Bullet") || (collision.gameObject.tag == "BigBullet") || collision.gameObject.tag == "Soccer" || collision.gameObject.tag == "VolleyBall") {
             //if (collision.gameObject.tag == "VolleyBall")
             //  collision.transform.GetComponent<Rigidbody>().velocity *= 1.2f;
+
+            if (collision.gameObject.tag == "VolleyBall") {
+                collision.transform.GetComponent<Rigidbody>().velocity += 1.0f * m_velocity;
+            }
 
             this.GetComponent<AudioSource>().Play();
 
@@ -42,5 +51,9 @@ public class Shield : MonoBehaviour {
                 SceneController.Level_Current.GetComponent<ScoreCalculation>().BulletBlocked();
             }
         }
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        
     }
 }

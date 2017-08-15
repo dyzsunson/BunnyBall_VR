@@ -91,8 +91,8 @@ Rigidbody:
   m_GameObject: {fileID: 1307410036125614}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.25
-  m_AngularDrag: 0.5
+  m_Drag: 0.4
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -112,6 +112,8 @@ MonoBehaviour:
   BubblePrefab: {fileID: 1000012696881832, guid: 0d1adb20421ed664b800c8cf3d103e70,
     type: 2}
   isBlocked: 0
+  Basket_ID: 0
+  Basket_Material: {fileID: 13400000, guid: 38c2995085863784fbdb82c7c1f90438, type: 2}
 --- !u!135 &135862945568853170
 SphereCollider:
   m_ObjectHideFlags: 1

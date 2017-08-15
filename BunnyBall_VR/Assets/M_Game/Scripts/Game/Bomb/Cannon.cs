@@ -49,7 +49,7 @@ public class Cannon : ShootController {
         this.FireOneBullet(bullet, m_firePower);
     }
 
-    protected override void Fire() {
+    protected override GameObject Fire() {
         m_firePower = m_power;
 
         GameObject bullet = null;
@@ -73,5 +73,7 @@ public class Cannon : ShootController {
             FireOneBullet(bullet, m_power);
 
         this.transform.parent.GetComponent<Rabbit>().Fire();
+
+        return bullet;
     }
 }

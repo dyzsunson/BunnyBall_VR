@@ -15,11 +15,11 @@ public class ShootController : MonoBehaviour {
     }
 
     // y rotate
-    float m_rotateSpeed = 0.0f;
-    float m_max_rotateSpeed = 50.0f;
-    float m_max_degree = 8.0f;
-    float m_rotate_a = 250.0f;
-    float m_pre_degree = 0.0f;
+    protected float m_rotateSpeed = 0.0f;
+    protected float m_max_rotateSpeed = 50.0f;
+    protected float m_max_degree = 8.0f;
+    protected float m_rotate_a = 250.0f;
+    protected float m_pre_degree = 0.0f;
 
     // fire obj
     public GameObject BulletPrefab;
@@ -143,10 +143,11 @@ public class ShootController : MonoBehaviour {
         SceneController.Level_Current.GetComponent<ScoreCalculation>().BulletFired();
     }
 
-    protected virtual void Fire() {
+    protected virtual GameObject Fire() {
         GameObject obj = Instantiate(BulletPrefab);
         FireOneBullet(obj, m_power, Vector3.zero);
         this.transform.parent.GetComponent<Rabbit>().Fire();
+        return obj;
     }
 
     public virtual void GameReady() {

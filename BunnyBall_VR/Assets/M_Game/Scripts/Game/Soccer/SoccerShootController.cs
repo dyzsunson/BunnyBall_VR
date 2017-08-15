@@ -69,15 +69,18 @@ public class SoccerShootController : ShootController {
         base.ResetFire();
     }
 
-    protected override void Fire() {
+    protected override GameObject Fire() {
         if (m_current_soccer == null)
-            return;
+            return null;
 
         m_current_soccer.GetComponent<SoccerBall>().Fire(new Vector3(1.25f * m_curve_power, 0.0f, 0.0f));
         FireOneBullet(m_current_soccer, m_power, new Vector3(m_curve_power * -0.5f, 0.0f, -0.3f));
 
         this.transform.parent.GetComponent<Rabbit>().Fire();
+
+        GameObject soccer = m_current_soccer;
         m_current_soccer = null;
+        return soccer;
     }
 
     public override void GameReady() {
