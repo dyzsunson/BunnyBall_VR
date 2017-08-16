@@ -7,8 +7,8 @@ public class Level : MonoBehaviour {
     public GameObject GoalObj;
     public RabbitAI AI;
     public GameObject HandObj;
+    public GameObject TutorialCanvas;
     public GameObject TutorialObj;
-    public GameObject GameTutorial;
 
     public Sprite LevelIcon;
     public string LevelName;
@@ -28,9 +28,9 @@ public class Level : MonoBehaviour {
         // HandObj.SetActive(true);
         rabbit.GameReady();
 
-        if (GameTutorial != null) {
-            GameTutorial.SetActive(true);
-            GameTutorial.GetComponent<FadeInOut>().FadeIn(1.0f);
+        if (TutorialObj != null) {
+            TutorialObj.SetActive(true);
+            TutorialObj.GetComponent<FadeInOut>().FadeIn(1.0f);
         }
         Invoke("HideTutorial", SceneController.context.ReadyWaitTime - 5.0f);
     }
@@ -38,8 +38,8 @@ public class Level : MonoBehaviour {
     public void GameStart() {
         rabbit.GameStart();
 
-        if (GameTutorial != null)
-            GameTutorial.SetActive(false);
+        if (TutorialObj != null)
+            TutorialObj.SetActive(false);
     }
 
     void ShowTutorial() {
@@ -47,7 +47,7 @@ public class Level : MonoBehaviour {
     }
 
     void HideTutorial() {
-        GameTutorial.GetComponent<FadeInOut>().FadeOut(2.0f);
+        TutorialObj.GetComponent<FadeInOut>().FadeOut(2.0f);
     }
 
     public void GameEnd() {
