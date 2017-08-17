@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoccerScore : MonoBehaviour {
+    public ScoreBoard Board_Prefab;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -22,6 +24,9 @@ public class SoccerScore : MonoBehaviour {
             this.GetComponent<AudioSource>().Play();
 
             SceneController.Level_Current.GetComponent<Soccer_ScoreCal>().BallIn();
+
+            ScoreBoard score_board = Instantiate(Board_Prefab);
+            score_board.transform.position = other.transform.position;
         }
     }
 }

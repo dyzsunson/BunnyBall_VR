@@ -48,6 +48,9 @@ public class Level : MonoBehaviour {
 
     void HideTutorial() {
         TutorialObj.GetComponent<FadeInOut>().FadeOut(2.0f);
+        Transform obj_3d = TutorialObj.transform.Find("3D_OBJ");
+        if (obj_3d != null)
+            obj_3d.gameObject.SetActive(false);
     }
 
     public void GameEnd() {

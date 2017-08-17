@@ -6,12 +6,9 @@ public class Volley_Score_Cal : ScoreCalculation {
     private int m_score = 0;
     private int m_in = 0;
 
-    public void InBasket(bool _correct) {
-        m_in++;
-        if (_correct)
-            m_score += 2;
-        else
-            m_score++;
+    public void InBasket(int _score) {
+        m_in++; 
+        m_score += _score;
     }
 
     public override void Calculate() {

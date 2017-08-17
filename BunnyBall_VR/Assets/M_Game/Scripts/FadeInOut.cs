@@ -8,6 +8,8 @@ public class FadeInOut : MonoBehaviour {
     float alphaNow = 0.0f;
     float totalTime;
 
+    public bool isAutoStart = false;
+
     public float outAlpha = 0.0f;// = 0.1f;
     public float inAlpha = 1.0f;
 
@@ -27,7 +29,7 @@ public class FadeInOut : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () { 
-        
+
 	}
 	
 	// Update is called once per frame

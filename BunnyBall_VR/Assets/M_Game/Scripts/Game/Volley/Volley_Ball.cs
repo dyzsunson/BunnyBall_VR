@@ -5,7 +5,7 @@ using UnityEngine;
 public class Volley_Ball : Bullet {
     private bool is_in_basket = false;
     public int Basket_ID = 0;
-
+    public bool is_moneyBall = false;
     public PhysicMaterial Basket_Material;
 
     public bool Is_in_basket {

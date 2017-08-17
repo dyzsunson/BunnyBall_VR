@@ -5,7 +5,11 @@ using UnityEngine;
 public class Volley_Shoot_Controller : ShootController  {
     float m_reload_gun_speed = 0.2f;
     public Volley_Basket[] basketArray;
+    public Volley_Ball MoneyBall_Prefab;
+    public ScoreBoard Double_Board;
     int m_basket_current;
+
+    int m_total_num = 0;
 
     protected override void Start() {
         base.Start();
@@ -15,7 +19,16 @@ public class Volley_Shoot_Controller : ShootController  {
 
     protected override GameObject Fire() {
         m_power = (m_power + 6.0f) / 7.5f;
-        GameObject ball = base.Fire();
+
+        GameObject ball = null;
+        m_total_num++;
+        if (m_total_num % 5 == 0) {
+            ball = base.Fire(MoneyBall_Prefab.gameObject);
+            ScoreBoard board = Instantiate(Double_Board);
+            board.transform.position = ball.transform.position + new Vector3(0.0f, 2.0f, 0.0f);
+        }
+        else
+            ball = base.Fire();
 
         m_basket_current = Random.Range(0, basketArray.Length);
         ball.GetComponent<Volley_Ball>().Basket_ID = m_basket_current;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Volley_Basket : MonoBehaviour {
     public int Basket_ID;
+    public ScoreBoard Board_Prefab;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -28,8 +30,19 @@ public class Volley_Basket : MonoBehaviour {
             if (!ball.Is_in_basket) {
                 ball.EnterBasket();
 
-                SceneController.Level_Current.GetComponent<Volley_Score_Cal>().InBasket(this.Basket_ID == ball.Basket_ID);
+                int score = 1;
+                if (this.Basket_ID == ball.Basket_ID)
+                    score = 2;
+                if (ball.is_moneyBall == true)
+                    score *= 2;
+
+                SceneController.Level_Current.GetComponent<Volley_Score_Cal>().InBasket(score);
                 this.GetComponent<AudioSource>().Play();
+
+                ScoreBoard score_board = Instantiate(Board_Prefab);
+                score_board.transform.position = other.transform.position + new Vector3(0.0f, 0.5f, 0.0f);
+
+                score_board.SetScore(score);
             }
         }
     }
