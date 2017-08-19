@@ -15,8 +15,8 @@ public class Volley_Ball : Bullet {
     }
 
     protected override void Start() {
+        m_lifeTime = 10.0f;
         base.Start();
-        m_lifeTime = 15.0f;
     }
 
     protected override void End() {

@@ -15,6 +15,9 @@ public class Volley_Shoot_Controller : ShootController  {
         base.Start();
         m_max_degree = 0.0f;
         m_max_reloadTime = 2.0f;
+
+        for (int i = 0; i < basketArray.Length; i++)
+            basketArray[i].Basket_ID = i;
     }
 
     protected override GameObject Fire() {

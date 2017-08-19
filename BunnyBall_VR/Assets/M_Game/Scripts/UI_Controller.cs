@@ -161,9 +161,11 @@ public class UI_Controller : MonoBehaviour {
 
         LevelIcon.sprite = LevelIcon_VR.sprite = _level.LevelIcon;
 
+        /*
         if (_previous != null)
             _previous.TutorialCanvas.SetActive(false);
 
         _level.TutorialCanvas.SetActive(true);
+        */
     }
 }

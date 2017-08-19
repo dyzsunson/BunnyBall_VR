@@ -79,7 +79,8 @@ public class TouchInput : MonoBehaviour {
                 this.TouchVibration(OVRInput.Controller.LTouch, m_vib_time, m_vid_power);
             }
         }
-        else if (SceneController.context.Current_State == SceneController.SceneState.Running) {
+        else if (SceneController.context.Current_State == SceneController.SceneState.Running 
+            || SceneController.context.Current_State == SceneController.SceneState.Waiting) {
             if (OVRInput.GetUp(OVRInput.RawButton.B)) {
                 is_backBtn_show = !is_backBtn_show;
                 BackMenu_VR.SetActive(is_backBtn_show);
