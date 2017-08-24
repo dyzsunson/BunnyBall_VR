@@ -155,6 +155,8 @@ public class ShootController : MonoBehaviour {
     }
 
     public virtual void GameReady() {
+        foreach (Skill skill in this.skill_array)
+            skill.UIObj.SetActive(true);
         Able_Fire = false;
     }
 
@@ -162,7 +164,11 @@ public class ShootController : MonoBehaviour {
         Able_Fire = true;
     }
 
-    public virtual void GameEnd() {
+    public virtual void GameEndingBuffer() {
         Able_Fire = false;
+    }
+
+    public virtual void GameEnd() {
+        // Able_Fire = false;
     }
 }

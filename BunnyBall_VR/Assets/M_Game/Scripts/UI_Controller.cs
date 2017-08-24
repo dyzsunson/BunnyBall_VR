@@ -133,10 +133,12 @@ public class UI_Controller : MonoBehaviour {
 
     }
 
-    public void GameEnd() {
+    public void GameEndingBuffer() {
         GameMenu.SetActive(false);
         GameMenuVR.SetActive(false);
+    }
 
+    public void GameEnd() {
         EndMenu.SetActive(true);
         EndMenuVR.SetActive(true);
 

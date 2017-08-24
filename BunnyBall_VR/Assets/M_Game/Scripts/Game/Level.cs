@@ -7,12 +7,13 @@ public class Level : MonoBehaviour {
     public GameObject GoalObj;
     public RabbitAI AI;
     public GameObject HandObj;
-    public GameObject TutorialCanvas;
     public GameObject TutorialObj;
 
     public Sprite LevelIcon;
     public string LevelName;
     public string LevelDescription;
+
+    public float EndingBufferTime = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +43,15 @@ public class Level : MonoBehaviour {
             TutorialObj.SetActive(false);
     }
 
+    public void GameEndingBuffer() {
+        rabbit.GameEndingBuffer();
+    }
+
+    public void GameEnd() {
+        // HandObj.SetActive(false);
+        rabbit.GameEnd();
+    }
+
     void ShowTutorial() {
         
     }
@@ -51,10 +61,5 @@ public class Level : MonoBehaviour {
         Transform obj_3d = TutorialObj.transform.Find("3D_OBJ");
         if (obj_3d != null)
             obj_3d.gameObject.SetActive(false);
-    }
-
-    public void GameEnd() {
-        // HandObj.SetActive(false);
-        rabbit.GameEnd();
     }
 }

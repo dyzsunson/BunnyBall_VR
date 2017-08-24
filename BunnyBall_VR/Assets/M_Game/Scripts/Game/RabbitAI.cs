@@ -255,7 +255,11 @@ public class RabbitAI : MonoBehaviour {
         RotateNext();
     }
 
-    public void GameEnd() {
+    public void GameEndingBuffer() {
         isWorking = false;
+    }
+
+    public void GameEnd() {
+        // isWorking = false;
     }
 }

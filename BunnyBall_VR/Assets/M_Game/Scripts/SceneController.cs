@@ -11,6 +11,13 @@ public class SceneController : MonoBehaviour {
     // Timer
     public float gameTime;
     float m_time;
+
+    public float TimeLeft {
+        get {
+            return m_time;
+        }
+    }
+
     public Text TimeText;
     public Text WaitTimeText;
 
@@ -22,6 +29,7 @@ public class SceneController : MonoBehaviour {
         Preparing = 0,
         Waiting = 1,
         Running = 2,
+        EndingBuffer = 3,
         End = 3
     }
 
@@ -102,7 +110,7 @@ public class SceneController : MonoBehaviour {
         if (m_state == SceneState.Running) {
             m_time -= Time.deltaTime;
             if (m_time < 0.0f)
-                GameEnd();
+                this.GameEndingBuffer();
             else {
                 TimeText.text = ((int)m_time).ToString();
                 TimeTextVR.text = ((int)m_time).ToString();
@@ -292,6 +300,18 @@ public class SceneController : MonoBehaviour {
             SceneController.AI_Current.GameStart();
     }
 
+    void GameEndingBuffer() {
+        m_state = SceneState.EndingBuffer;
+        this.levelList[s_currentLevel].GameEndingBuffer();
+
+        if (InputCtrl.context.Is_AI_Ctrl)
+            SceneController.AI_Current.GameEndingBuffer();
+
+        this.ui_controller.GameEndingBuffer();
+
+        Invoke("GameEnd", this.levelList[s_currentLevel].EndingBufferTime);
+    }
+
     void GameEnd() {
         m_state = SceneState.End;
         this.levelList[s_currentLevel].GameEnd();
@@ -302,8 +322,6 @@ public class SceneController : MonoBehaviour {
         this.ShowTouchObj(2.0f);
 
         this.ui_controller.GameEnd();
-
-        this.levelList[s_currentLevel].GameEnd();
 
         // score
         ScoreCalculate();

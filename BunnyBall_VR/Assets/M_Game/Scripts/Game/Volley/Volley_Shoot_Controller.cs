@@ -16,8 +16,10 @@ public class Volley_Shoot_Controller : ShootController  {
         m_max_degree = 0.0f;
         m_max_reloadTime = 2.0f;
 
-        for (int i = 0; i < basketArray.Length; i++)
-            basketArray[i].Basket_ID = i;
+        if (basketArray.Length > 0) {
+            for (int i = 0; i < basketArray.Length; i++)
+                basketArray[i].Basket_ID = i;
+        }
     }
 
     protected override GameObject Fire() {
@@ -33,9 +35,11 @@ public class Volley_Shoot_Controller : ShootController  {
         else
             ball = base.Fire();
 
-        m_basket_current = Random.Range(0, basketArray.Length);
-        ball.GetComponent<Volley_Ball>().Basket_ID = m_basket_current;
-        Invoke("HighLightBasket", 0.5f);
+        if (basketArray.Length > 0) {
+            m_basket_current = Random.Range(0, basketArray.Length);
+            ball.GetComponent<Volley_Ball>().Basket_ID = m_basket_current;
+            Invoke("HighLightBasket", 0.5f);
+        }
 
         this.transform.parent.GetComponent<Rabbit>().Fire();
         return ball;

@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour {
     public GameObject BubblePrefab;
 
     protected float m_lifeTime = 5.0f;
-    float m_bottom = 0.0f;
+    protected float m_bottom = -1.1f;
 
     bool is_inWater = false;
 
@@ -15,10 +15,6 @@ public class Bullet : MonoBehaviour {
 	// Use this for initialization
 	protected virtual void Start () {
         Invoke("End", m_lifeTime);
-        if (this.tag == "BigBullet")
-            m_bottom = 0.1f;
-        else
-            m_bottom = -1.1f;
 	}
 	
 	// Update is called once per frame

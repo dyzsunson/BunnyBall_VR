@@ -64,22 +64,28 @@ public class Rabbit : MonoBehaviour {
 
     public void GameReady() {
         Is_running = false;
-        foreach (Skill skill in m_gun.skill_array)
-            skill.UIObj.SetActive(true);
 
-        m_gun.GameReady();
+        if (m_gun != null)
+            m_gun.GameReady();
     }
 
     public void GameStart() {
         Is_running = true;
 
-        m_gun.GameStart();
+        if (m_gun != null)
+            m_gun.GameStart();
+    }
+
+    public void GameEndingBuffer() {
+        Is_running = false;
+
+        if (m_gun != null)
+            m_gun.GameEndingBuffer();
     }
 
     public void GameEnd() {
-        Is_running = false;
-
-        m_gun.GameEnd();
+        if (m_gun != null)
+            m_gun.GameEnd();
     }
 
     public virtual void Fire() {
