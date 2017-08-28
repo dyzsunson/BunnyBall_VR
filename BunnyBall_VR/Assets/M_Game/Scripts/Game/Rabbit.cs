@@ -19,6 +19,8 @@ public class Rabbit : MonoBehaviour {
     protected float m_rotate_a = 250.0f;
     protected float m_degree = 0.0f;
 
+    protected Animator animator;
+
     public float Max_RotateSpeed {
         get {
             return this.m_max_rotateSpeed;
@@ -29,6 +31,11 @@ public class Rabbit : MonoBehaviour {
         get {
             return this.m_rotate_a;
         }
+    }
+
+    protected virtual void Awake() {
+        if (this.transform.Find("Ellic") != null)
+            animator = this.transform.Find("Ellic").GetComponent<Animator>();
     }
 
     // Use this for initialization

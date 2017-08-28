@@ -29,7 +29,7 @@ public class EllicTarget : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (m_life > 0 && other.gameObject.tag == "Bullet") {
-            m_life--;
+            m_life -= other.GetComponent<Skeet_Bullet>().p_attack;
             if (m_life <= 0)
                 Die();
             ChangeLife();

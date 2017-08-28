@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Shoot_AI : RabbitAI {
 
-    float m_min = 0.3f;
-    float m_max = 0.5f;
+    float m_min = 0.5f;
+    float m_max = 0.8f;
 
     protected override void Start() {
         base.Start();
         m_y_rotateRange = 0.0f;
         m_x_rotateRange = 0.0f;
-        m_fire_wait_minTime = 2.0f;
-        m_fire_wait_maxTime = 3.0f;
+        m_fire_wait_minTime = 3.0f;
+        m_fire_wait_maxTime = 4.0f;
 
         m_rotate_wait_minTime = m_rotate_wait_maxTime = 1.0f;
         Invoke("SpeedUp", 20.0f);

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RabbitCannon : Rabbit {
-    private Animator animator;
-
     protected override void Start() {
         base.Start();
-        animator = GetComponent<Animator>();
+    }
+
+    protected override void Update() {
+        base.Update();
     }
 
     public override void Fire() {
-        animator.Play("Base Layer.Hit");
+        animator.Play("Base Layer.CannonFire");
     }
 }

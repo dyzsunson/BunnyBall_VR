@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
         if (!is_inWater && this.transform.position.y < m_bottom) {
             GameObject bubble = Instantiate(BubblePrefab) as GameObject;
             bubble.transform.position = this.transform.position;

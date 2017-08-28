@@ -92,5 +92,6 @@ public class SoccerShootController : ShootController {
     void BuildSoccer() {
         m_current_soccer = Instantiate(BulletPrefab);
         m_current_soccer.transform.position = Build_Soccer_Position.position;
+        m_current_soccer.transform.SetParent(this.transform.parent.parent);
     }
 }

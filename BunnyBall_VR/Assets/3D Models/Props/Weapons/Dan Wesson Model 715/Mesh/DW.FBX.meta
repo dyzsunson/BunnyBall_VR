@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: ad8bd963959aeaf43a59d15f8da6ec7c
+timeCreated: 1474135307
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: DW1_002
+    100004: DW2_003
+    100006: DWb_b001
+    100008: Arm
+    100010: Bullet
+    100012: Magazine
+    100014: Bullet 1
+    100016: Bullet 2
+    100018: Bullet 3
+    100020: Bullet 4
+    100022: Bullet 5
+    100024: DW1
+    100026: DW2_Handle
+    100028: DW2_Hummer
+    100030: DW2_Ironsight
+    100032: DW2_Trigger
+    100034: Shell
+    100036: Shell 1
+    100038: Shell 2
+    100040: Shell 3
+    100042: Shell 4
+    100044: Shell 5
+    400000: //RootNode
+    400002: DW1_002
+    400004: DW2_003
+    400006: DWb_b001
+    400008: Arm
+    400010: Bullet
+    400012: Magazine
+    400014: Bullet 1
+    400016: Bullet 2
+    400018: Bullet 3
+    400020: Bullet 4
+    400022: Bullet 5
+    400024: DW1
+    400026: DW2_Handle
+    400028: DW2_Hummer
+    400030: DW2_Ironsight
+    400032: DW2_Trigger
+    400034: Shell
+    400036: Shell 1
+    400038: Shell 2
+    400040: Shell 3
+    400042: Shell 4
+    400044: Shell 5
+    2300000: DW1_002
+    2300002: DW2_003
+    2300004: DWb_b001
+    2300006: Arm
+    2300008: Bullet
+    2300010: Magazine
+    2300012: Bullet 1
+    2300014: Bullet 2
+    2300016: Bullet 3
+    2300018: Bullet 4
+    2300020: Bullet 5
+    2300022: DW1
+    2300024: DW2_Handle
+    2300026: DW2_Hummer
+    2300028: DW2_Ironsight
+    2300030: DW2_Trigger
+    2300032: Shell
+    2300034: Shell 1
+    2300036: Shell 2
+    2300038: Shell 3
+    2300040: Shell 4
+    2300042: Shell 5
+    3300000: DW1_002
+    3300002: DW2_003
+    3300004: DWb_b001
+    3300006: Arm
+    3300008: Bullet
+    3300010: Magazine
+    3300012: Bullet 1
+    3300014: Bullet 2
+    3300016: Bullet 3
+    3300018: Bullet 4
+    3300020: Bullet 5
+    3300022: DW1
+    3300024: DW2_Handle
+    3300026: DW2_Hummer
+    3300028: DW2_Ironsight
+    3300030: DW2_Trigger
+    3300032: Shell
+    3300034: Shell 1
+    3300036: Shell 2
+    3300038: Shell 3
+    3300040: Shell 4
+    3300042: Shell 5
+    4300000: DW1_002
+    4300002: DW2_003
+    4300004: DWb_b001
+    4300006: Magazine
+    4300008: Bullet
+    4300010: Arm
+    4300012: DW1
+    4300014: DW2_Handle
+    4300016: Shell
+    4300018: Shell
+    4300020: Bullet
+    4300022: Shell
+    4300024: Bullet
+    4300026: Shell
+    4300028: Bullet
+    4300030: Shell
+    4300032: Bullet
+    4300034: Shell
+    4300036: Bullet
+    4300038: DW2_Trigger
+    4300040: DW2_Hummer
+    4300042: DW2_Ironsight
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
