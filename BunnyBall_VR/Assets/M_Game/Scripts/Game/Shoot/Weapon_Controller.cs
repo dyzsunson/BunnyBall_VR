@@ -19,6 +19,8 @@ public class Weapon_Controller : MonoBehaviour {
 
     int current_weapon = 0;
 
+    public GameObject[] p_weapon_array;
+
     // Use this for initialization
     void Start () {
 		
@@ -62,9 +64,9 @@ public class Weapon_Controller : MonoBehaviour {
     }
 
     void Weapon_Change(int _offset) {
-        this.transform.GetChild(current_weapon).gameObject.SetActive(false);
-        current_weapon = (current_weapon + _offset + this.transform.childCount) % this.transform.childCount;
-        this.transform.GetChild(current_weapon).gameObject.SetActive(true);
+        p_weapon_array[current_weapon].SetActive(false);
+        current_weapon = (current_weapon + _offset + p_weapon_array.Length) % p_weapon_array.Length;
+        p_weapon_array[current_weapon].SetActive(true);
     }
 
     void TouchVibration(OVRInput.Controller _controller, float _time, float _power) {

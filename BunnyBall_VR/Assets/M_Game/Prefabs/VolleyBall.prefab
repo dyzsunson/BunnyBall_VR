@@ -99,7 +99,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &114178089672249548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +115,7 @@ MonoBehaviour:
     type: 2}
   isBlocked: 0
   Basket_ID: 0
+  is_moneyBall: 0
   Basket_Material: {fileID: 13400000, guid: 38c2995085863784fbdb82c7c1f90438, type: 2}
 --- !u!135 &135257758206654166
 SphereCollider:
