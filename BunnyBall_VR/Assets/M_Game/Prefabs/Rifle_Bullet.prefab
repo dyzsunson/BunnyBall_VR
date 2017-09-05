@@ -469,7 +469,7 @@ MonoBehaviour:
   isBlocked: 0
   SmokePrefab: {fileID: 1929994923892932, guid: cfccae4548a66d44b96dbc391a13b373,
     type: 2}
-  p_attack: 3
+  p_attack: 5
 --- !u!135 &135529475037420492
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -11,4 +11,8 @@ public class RabbitSoccer : Rabbit {
         if (!(m_gun as SoccerShootController).Is_powerHolding)
             base.Update();
     }
+
+    public override void Fire() {
+        animator.Play("Base Layer.SoccerKick");
+    }
 }

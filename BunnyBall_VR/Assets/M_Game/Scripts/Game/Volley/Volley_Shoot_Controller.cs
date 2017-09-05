@@ -11,6 +11,12 @@ public class Volley_Shoot_Controller : ShootController  {
 
     int m_total_num = 0;
 
+    public Transform p_build_Soccer_Position;
+    private GameObject m_current_volley;
+
+    private float m_power_last;
+    private GameObject m_last_volley;
+
     protected override void Start() {
         base.Start();
         m_max_degree = 0.0f;
@@ -20,29 +26,49 @@ public class Volley_Shoot_Controller : ShootController  {
             for (int i = 0; i < basketArray.Length; i++)
                 basketArray[i].Basket_ID = i;
         }
+
+        this.BuildVolley();
     }
 
     protected override GameObject Fire() {
-        m_power = (m_power + 6.0f) / 7.5f;
+        m_power = (m_power + 6.2f) / 7.5f;
 
-        GameObject ball = null;
-        m_total_num++;
-        if (m_total_num % 5 == 0) {
-            ball = base.Fire(MoneyBall_Prefab.gameObject);
-            ScoreBoard board = Instantiate(Double_Board);
-            board.transform.position = ball.transform.position + new Vector3(0.0f, 2.0f, 0.0f);
-        }
-        else
-            ball = base.Fire();
 
-        if (basketArray.Length > 0) {
-            m_basket_current = Random.Range(0, basketArray.Length);
-            ball.GetComponent<Volley_Ball>().Basket_ID = m_basket_current;
-            Invoke("HighLightBasket", 0.5f);
-        }
+        if (m_current_volley == null)
+            return null;
+
+        m_power_last = m_power;
+        m_last_volley = m_current_volley;
+        Invoke("LateFire", 0.35f);
 
         this.transform.parent.GetComponent<Rabbit>().Fire();
+        GameObject ball = m_current_volley;
+        m_current_volley = null;
+
+        m_last_volley.GetComponent<Rigidbody>().useGravity = true;
+        m_last_volley.GetComponent<Rigidbody>().AddForce(150.0f * new Vector3(0.0f, 1.0f, 0.0f));
+
         return ball;
+    }
+
+    protected override void ReloadEnd() {
+        base.ReloadEnd();
+        this.BuildVolley();
+    }
+
+    void LateFire() {
+        m_last_volley.GetComponent<Rigidbody>().useGravity = true;
+        m_last_volley.GetComponent<Collider>().enabled = true;
+
+        FireOneBullet(m_last_volley, m_power_last, new Vector3(0.0f, 0.0f, 0.0f));
+        m_last_volley.GetComponent<Volley_Ball>().Fire();
+
+        if (m_total_num % 5 == 0) {
+            ScoreBoard board = Instantiate(Double_Board);
+            board.transform.position = m_last_volley.transform.position + new Vector3(0.0f, 2.0f, 0.0f);
+        }
+
+        Invoke("HighLightBasket", 0.5f);
     }
 
     void HighLightBasket() {
@@ -71,4 +97,28 @@ public class Volley_Shoot_Controller : ShootController  {
         base.GameStart();
         DeHighLightBasket();
     }
+
+    void BuildVolley() {
+        m_total_num++;
+        if (m_total_num % 5 == 0) {
+            m_current_volley = Instantiate(MoneyBall_Prefab).gameObject;
+        }
+        else
+            m_current_volley = Instantiate(BulletPrefab);
+
+        if (basketArray.Length > 0) {
+            m_basket_current = Random.Range(0, basketArray.Length);
+            m_current_volley.GetComponent<Volley_Ball>().Basket_ID = m_basket_current;
+        }
+
+        
+        m_current_volley.transform.position = p_build_Soccer_Position.position;
+        m_current_volley.transform.SetParent(this.transform.parent.parent);
+
+        m_current_volley.GetComponent<Rigidbody>().useGravity = false;
+        m_current_volley.GetComponent<Collider>().enabled = false;
+
+        
+    }
+
 }

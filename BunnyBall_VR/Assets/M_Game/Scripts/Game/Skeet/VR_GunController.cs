@@ -24,10 +24,16 @@ public class VR_GunController : MonoBehaviour {
     public AudioSource p_reload_audio;
     public AudioSource p_fire_audio;
 
+    public Bullet_UI p_bullet_ui;
+
     // Use this for initialization
     void Start () {
         Physics.IgnoreLayerCollision(bulletPrefab.gameObject.layer, bulletPrefab.gameObject.layer);
         m_bullet_num = m_bullet_num_max;
+
+        if (p_bullet_ui != null) {
+            p_bullet_ui.SetCurrentBullet(m_bullet_num);
+        }
     }
 
     // Update is called once per frame
@@ -83,6 +89,10 @@ public class VR_GunController : MonoBehaviour {
             m_bullet_num = m_bullet_num_max;
             m_is_reloading = false;
 
+            if (p_bullet_ui != null) {
+                p_bullet_ui.SetCurrentBullet(m_bullet_num);
+            }
+
             this.p_reload_audio.Play();
             // p_reload_audio.Play();
         }
@@ -104,6 +114,10 @@ public class VR_GunController : MonoBehaviour {
         m_bullet_num--;
         if (m_bullet_num <= 0) {
             m_is_reloading = true;
+        }
+
+        if (p_bullet_ui != null) {
+            p_bullet_ui.SetCurrentBullet(m_bullet_num);
         }
 
     }

@@ -8,6 +8,7 @@ TagManager:
   - BigBullet
   - Soccer
   - VolleyBall
+  - Target
   layers:
   - Default
   - TransparentFX

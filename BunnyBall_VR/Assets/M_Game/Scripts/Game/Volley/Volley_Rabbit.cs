@@ -8,4 +8,8 @@ public class Volley_Rabbit : RabbitCannon {
         m_max_degree = 10.0f;
     }
 
+    public override void Fire() {
+        animator.Play("Base Layer.VolleyHit");
+    }
+
 }

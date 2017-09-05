@@ -12,14 +12,16 @@ public class EllicTarget : MonoBehaviour {
     float m_life_sprite_scaleX_ori;
     float m_life_sprite_positionX_ori;
 
-	// Use this for initialization
-	void Start () {
+    public Animator p_animator;
+
+    // Use this for initialization
+    void Start () {
         life_sprite = this.transform.Find("Life");
         m_life = m_life_max;
 
         m_life_sprite_scaleX_ori = life_sprite.localScale.x;
         m_life_sprite_positionX_ori = life_sprite.localPosition.x;
-        Invoke("Escape", m_escape_time);
+        Invoke("Start_Escape", m_escape_time);
 	}
 	
 	// Update is called once per frame
@@ -29,25 +31,43 @@ public class EllicTarget : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (m_life > 0 && other.gameObject.tag == "Bullet") {
-            m_life -= other.GetComponent<Skeet_Bullet>().p_attack;
-            if (m_life <= 0)
-                Die();
-            ChangeLife();
-            if (this.GetComponent<AudioSource>().isPlaying == false)
-                this.GetComponent<AudioSource>().Play();
+            this.Hit(other);
         }
     }
 
-    private void Remove() {
-        Destroy(this.gameObject);
+    void Hit(Collider _other) {
+        m_life -= _other.GetComponent<Skeet_Bullet>().p_attack;
+        p_animator.Play("Base Layer.ShootBeat");
+
+        if (m_life <= 0)
+            Start_Die();
+        ChangeLife();
+        if (this.GetComponent<AudioSource>().isPlaying == false)
+            this.GetComponent<AudioSource>().Play();
     }
 
     private void Die() {
-        Invoke("Remove", 1.0f);
+        SceneController.Level_Current.GetComponent<Shoot_ScoreCal>().Ellic_KnockDown();
+        Destroy(this.gameObject);
     }
 
     private void Escape() {
-        Invoke("Remove", 1.0f);
+        if (m_life > 0) {
+            SceneController.Level_Current.GetComponent<Shoot_ScoreCal>().Ellic_Escape();
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void Start_Die() {
+        p_animator.Play("Base Layer.ShootDie");
+        Invoke("Die", 1.0f);
+    }
+
+    private void Start_Escape() {
+        if (m_life > 0) {
+            p_animator.Play("Base Layer.ShootEscape");
+            Invoke("Escape", 2.5f);
+        }
     }
 
     private void ChangeLife() {

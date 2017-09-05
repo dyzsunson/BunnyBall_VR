@@ -17,14 +17,16 @@ public class Weapon_Controller : MonoBehaviour {
     float m_vib_time = 0.2f;
     float m_vid_power = 0.5f;
 
-    int current_weapon = 0;
+    int m_current_weapon = 0;
 
     public GameObject[] p_weapon_array;
+    public GameObject[] p_weapon_ui_array;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        p_weapon_ui_array[m_current_weapon].SetActive(true);
+        p_weapon_array[m_current_weapon].SetActive(true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -64,9 +66,13 @@ public class Weapon_Controller : MonoBehaviour {
     }
 
     void Weapon_Change(int _offset) {
-        p_weapon_array[current_weapon].SetActive(false);
-        current_weapon = (current_weapon + _offset + p_weapon_array.Length) % p_weapon_array.Length;
-        p_weapon_array[current_weapon].SetActive(true);
+        p_weapon_array[m_current_weapon].SetActive(false);
+        p_weapon_ui_array[m_current_weapon].SetActive(false);
+
+        m_current_weapon = (m_current_weapon + _offset + p_weapon_array.Length) % p_weapon_array.Length;
+
+        p_weapon_array[m_current_weapon].SetActive(true);
+        p_weapon_ui_array[m_current_weapon].SetActive(true);
     }
 
     void TouchVibration(OVRInput.Controller _controller, float _time, float _power) {

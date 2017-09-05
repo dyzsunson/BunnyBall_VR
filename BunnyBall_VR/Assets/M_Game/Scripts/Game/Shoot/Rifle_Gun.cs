@@ -19,15 +19,24 @@ public class Rifle_Gun : MonoBehaviour {
     public AudioSource p_reload_audio;
     public AudioSource p_fire_audio;
 
-    private bool m_is_reloading = false;
+    // private bool m_is_reloading = false;
     private List<float> m_distance_array = new List<float>();
     private int m_check_length = 30;
     private float m_ok_distance = 0.5f;
 
-	// Use this for initialization
-	void Start () {
+    private int m_bullet_num;
+    private int m_bullet_max_num = 5;
 
-	}
+    public Bullet_UI p_bullet_ui;
+
+    // Use this for initialization
+    void Start () {
+        m_bullet_num = m_bullet_max_num;
+
+        if (p_bullet_ui != null) {
+            p_bullet_ui.SetCurrentBullet(m_bullet_num);
+        }
+    }
 
     private void Update() {
         if (r_time > 0.0f) {
@@ -39,7 +48,7 @@ public class Rifle_Gun : MonoBehaviour {
         }
 
 
-        if (m_is_reloading == false) {
+        if (m_bullet_num > 0) { // m_is_reloading == false
             float x = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
 
             if (m_isHold == true && x < 0.5f) {
@@ -76,7 +85,13 @@ public class Rifle_Gun : MonoBehaviour {
 
         if (max_changed > m_ok_distance) {
             m_distance_array.Clear();
-            m_is_reloading = false;
+            if (m_bullet_num < m_bullet_max_num) {
+                m_bullet_num++;
+                if (p_bullet_ui != null) {
+                    p_bullet_ui.SetCurrentBullet(m_bullet_num);
+                }
+            }
+
             p_reload_audio.Play();
         }
     }
@@ -93,7 +108,12 @@ public class Rifle_Gun : MonoBehaviour {
         OVRInput.SetControllerVibration(0.8f, 0.8f, OVRInput.Controller.RTouch);
         p_fire_audio.Play();
 
-        m_is_reloading = true;
+        m_bullet_num--;
+
+        if (p_bullet_ui != null) {
+            p_bullet_ui.SetCurrentBullet(m_bullet_num);
+        }
+        // m_is_reloading = true;
 
         r_time = 0.1f;
     }

@@ -995,8 +995,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
-  - {fileID: 4542508320128698}
   - {fileID: 4957388912718732}
+  - {fileID: 4542508320128698}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1054,7 +1054,7 @@ Transform:
   m_LocalScale: {x: 0.030000001, y: 0.030000001, z: 0.030000001}
   m_Children: []
   m_Father: {fileID: 4405358458854638}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4563571988420196
 Transform:
@@ -1373,7 +1373,7 @@ Transform:
   - {fileID: 4442065593262506}
   - {fileID: 4890852831862206}
   m_Father: {fileID: 4405358458854638}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4962753862674290
 Transform:
@@ -1673,7 +1673,7 @@ Animator:
   m_GameObject: {fileID: 1701082448652034}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f816b17a868276b4fb81ee2b86950aeb, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28ff62ef667e3f84389d3183aaa3ba69, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1692,8 +1692,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afaec23e6071e944aa40fe0b0c141846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_life_max: 6
+  m_life_max: 10
   m_escape_time: 10
+  p_animator: {fileID: 95212512845200168}
 --- !u!137 &137863955663426700
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
