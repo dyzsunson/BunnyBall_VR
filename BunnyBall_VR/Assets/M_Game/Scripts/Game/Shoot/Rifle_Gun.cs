@@ -125,6 +125,9 @@ public class Rifle_Gun : MonoBehaviour {
     // Update is called once per frame
     void LateUpdate () {
         this.transform.position = right_hand.position;
-        this.transform.forward = left_hand.position - right_hand.position;
+        Vector3 t_forward = left_hand.position - right_hand.position;
+        if (t_forward == Vector3.zero)
+            t_forward = new Vector3(0.0f, 0.0f, 1.0f);
+        this.transform.forward = t_forward;
     }
 }

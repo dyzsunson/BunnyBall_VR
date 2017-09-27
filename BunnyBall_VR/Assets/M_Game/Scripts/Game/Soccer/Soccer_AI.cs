@@ -26,7 +26,7 @@ public class Soccer_AI : RabbitAI {
             t = 1.2f * GetFireTime();
         }
 
-        float angle = SceneController.Rabbit_Current.transform.rotation.eulerAngles.y;
+        float angle = SceneController.Ellic_Current.transform.rotation.eulerAngles.y;
         if (angle > 180.0f)
             angle -= 360.0f;
 

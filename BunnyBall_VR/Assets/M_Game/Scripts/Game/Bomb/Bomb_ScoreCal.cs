@@ -19,7 +19,7 @@ public class Bomb_ScoreCal : ScoreCalculation {
 
     public override void Calculate() {
         int[] scores = new int[] { m_totalEgg - m_hitEgg, m_hitEgg, m_bulletFired_num, m_bulletBlocked_num};
-        string[] names = new string[] { "Cubes Remain", "Cubes Beated", "Bombs Fired", "Bombs Blocked" };
+        string[] names = new string[] { "Cubes Remaining", "Cubes Lost", "Balls Fired", "Balls Blocked" };
 
         this.Calculate(scores, names);
     }

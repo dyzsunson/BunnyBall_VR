@@ -26,7 +26,7 @@ public class Skeet_ShootController : ShootController {
             ball = base.Fire();
 
 
-        this.transform.parent.GetComponent<Rabbit>().Fire();
+        this.transform.parent.GetComponent<EllicControlller>().Fire();
         return ball;
     }
 

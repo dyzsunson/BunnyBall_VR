@@ -47,13 +47,17 @@ public class EllicTarget : MonoBehaviour {
     }
 
     private void Die() {
-        SceneController.Level_Current.GetComponent<Shoot_ScoreCal>().Ellic_KnockDown();
+        Shoot_ScoreCal score = SceneController.Level_Current.GetComponent<Shoot_ScoreCal>();
+        if (score != null)
+            score.Ellic_KnockDown();
         Destroy(this.gameObject);
     }
 
     private void Escape() {
         if (m_life > 0) {
-            SceneController.Level_Current.GetComponent<Shoot_ScoreCal>().Ellic_Escape();
+            Shoot_ScoreCal score = SceneController.Level_Current.GetComponent<Shoot_ScoreCal>();
+            if (score != null)
+                score.Ellic_Escape();
             Destroy(this.gameObject);
         }
     }

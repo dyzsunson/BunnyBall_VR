@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour {
-    public Rabbit rabbit;
-    public GameObject GoalObj;
+public class Level : MonoBehaviour, Game_Process_Interface{
+    public EllicControlller g_ellic;
+    public GameObject g_goal;
     public RabbitAI AI;
     public GameObject HandObj;
     public GameObject TutorialObj;
@@ -25,32 +25,46 @@ public class Level : MonoBehaviour {
 		
 	}
 
+#region Game_Process_Interface
     public void GameReady() {
         // HandObj.SetActive(true);
-        rabbit.GameReady();
+        g_ellic.GameReady();
 
         if (TutorialObj != null) {
             TutorialObj.SetActive(true);
             TutorialObj.GetComponent<FadeInOut>().FadeIn(1.0f);
         }
         Invoke("HideTutorial", SceneController.context.ReadyWaitTime - 5.0f);
+
+        if (g_goal != null)
+            g_goal.GetComponent<Game_Process_Interface>().GameReady();
     }
 
     public void GameStart() {
-        rabbit.GameStart();
+        g_ellic.GameStart();
 
         if (TutorialObj != null)
             TutorialObj.SetActive(false);
+
+        if (g_goal != null)
+            g_goal.GetComponent<Game_Process_Interface>().GameStart();
     }
 
-    public void GameEndingBuffer() {
-        rabbit.GameEndingBuffer();
+    public void GameEndBuffer() {
+        g_ellic.GameEndBuffer();
+
+        if (g_goal != null)
+            g_goal.GetComponent<Game_Process_Interface>().GameEndBuffer();
     }
 
     public void GameEnd() {
         // HandObj.SetActive(false);
-        rabbit.GameEnd();
+        g_ellic.GameEnd();
+
+        if (g_goal != null)
+            g_goal.GetComponent<Game_Process_Interface>().GameEnd();
     }
+#endregion
 
     void ShowTutorial() {
         

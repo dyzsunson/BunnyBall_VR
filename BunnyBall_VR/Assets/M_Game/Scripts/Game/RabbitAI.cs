@@ -121,7 +121,7 @@ public class RabbitAI : MonoBehaviour {
     }
 
     float RotateAroundY() {
-        float startDegree = SceneController.Rabbit_Current.transform.rotation.eulerAngles.y;
+        float startDegree = SceneController.Ellic_Current.transform.rotation.eulerAngles.y;
         if (startDegree > 180.0f)
             startDegree -= 360.0f;
 
@@ -144,7 +144,7 @@ public class RabbitAI : MonoBehaviour {
     }
 
     float RotateAroundX() {
-        float startDegree = SceneController.Rabbit_Current.ShootCtrl.GunBodyTransform.rotation.eulerAngles.x;
+        float startDegree = SceneController.Ellic_Current.ShootCtrl.GunBodyTransform.rotation.eulerAngles.x;
         if (startDegree > 180.0f)
             startDegree -= 360.0f;
 
@@ -193,7 +193,7 @@ public class RabbitAI : MonoBehaviour {
 
     void WaitAfterRotate() {
         if (is_from_file) {
-            SceneController.Rabbit_Current.transform.rotation = Quaternion.Euler(new Vector3(0.0f, array[m_current], 0.0f));
+            SceneController.Ellic_Current.transform.rotation = Quaternion.Euler(new Vector3(0.0f, array[m_current], 0.0f));
         }
 
         IsUpHold = IsDownHold = IsLeftHold = IsRightHold = false;
@@ -219,7 +219,7 @@ public class RabbitAI : MonoBehaviour {
     }
 
     protected virtual float GetFireTime() {
-        float degree = SceneController.Rabbit_Current.ShootCtrl.GunBodyTransform.rotation.eulerAngles.x;
+        float degree = SceneController.Ellic_Current.ShootCtrl.GunBodyTransform.rotation.eulerAngles.x;
         if (degree > 180.0f)
             degree -= 360.0f;
 

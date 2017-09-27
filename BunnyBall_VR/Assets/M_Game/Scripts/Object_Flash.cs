@@ -48,7 +48,7 @@ public class Object_Flash : MonoBehaviour {
 
     public void StopLoop() {
         isWorking = false;
-        this.SetAlpha(0.0f);
+        this.SetAlpha(1.0f);
     }
 
     void SetAlpha(float _a) {

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274637915509312}
   - component: {fileID: 137838238933590012}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wing2M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4555786102926668}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Root_JNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4864430915641944}
   - component: {fileID: 137173634004233354}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HeadM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4942378979152768}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MeshG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 138231572273851860}
   - component: {fileID: 120256424071228648}
   - component: {fileID: 96157890135235748}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arrow
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4636685054302264}
   - component: {fileID: 137805618894613620}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wing3M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4531830028736488}
   - component: {fileID: 137847769990577326}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PoleM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4999090647011548}
   - component: {fileID: 137686873448734080}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wing1M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4134904159003176}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4734181064328292}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: JNTG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 4146380065585330}
   - component: {fileID: 54570532465554884}
   - component: {fileID: 135905459049369000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4102320274479180}
   - component: {fileID: 137335036061379132}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TipM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346564932663502}
   m_LocalRotation: {x: -0, y: -0.3772252, z: -0, w: 0.92612153}
-  m_LocalPosition: {x: -0.48107147, y: 3.6300054, z: 0.18003464}
+  m_LocalPosition: {x: -0.48107147, y: 3.6300054, z: -0.05}
   m_LocalScale: {x: 42.24319, y: 30, z: 42.24318}
   m_Children:
   - {fileID: 4734181064328292}
@@ -510,8 +510,8 @@ MonoBehaviour:
   SmokePrefab: {fileID: 1744576213923012, guid: 4fa2fb8bff5815f479193d4e575548f5,
     type: 2}
   p_attack: 3
-  p_center_transform: {fileID: 4134904159003176}
-  p_tail: {fileID: 54570532465554884}
+  g_center_transform: {fileID: 4134904159003176}
+  g_tail: {fileID: 54570532465554884}
 --- !u!120 &120256424071228648
 LineRenderer:
   m_ObjectHideFlags: 1

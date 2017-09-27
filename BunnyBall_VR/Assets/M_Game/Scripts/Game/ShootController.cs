@@ -150,7 +150,7 @@ public class ShootController : MonoBehaviour {
     protected virtual GameObject Fire(GameObject _BulletPrefab) {
         GameObject obj = Instantiate(_BulletPrefab);
         FireOneBullet(obj, m_power, Vector3.zero);
-        this.transform.parent.GetComponent<Rabbit>().Fire();
+        this.transform.parent.GetComponent<EllicControlller>().Fire();
         return obj;
     }
 

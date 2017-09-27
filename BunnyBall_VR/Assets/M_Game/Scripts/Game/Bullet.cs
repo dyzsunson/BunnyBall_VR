@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour {
     protected float m_lifeTime = 5.0f;
     protected float m_bottom = -1.1f;
 
-    bool is_inWater = false;
+    protected bool is_inWater = false;
 
     public bool isBlocked = false;
 

@@ -41,7 +41,7 @@ public class Volley_Shoot_Controller : ShootController  {
         m_last_volley = m_current_volley;
         Invoke("LateFire", 0.35f);
 
-        this.transform.parent.GetComponent<Rabbit>().Fire();
+        this.transform.parent.GetComponent<EllicControlller>().Fire();
         GameObject ball = m_current_volley;
         m_current_volley = null;
 

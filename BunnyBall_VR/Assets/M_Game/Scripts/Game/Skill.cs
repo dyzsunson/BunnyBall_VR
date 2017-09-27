@@ -23,7 +23,7 @@ public class Skill : MonoBehaviour {
     }
 
     void Update() {
-        if (SceneController.Rabbit_Current.ShootCtrl.Able_Fire) {
+        if (SceneController.Ellic_Current.ShootCtrl.Able_Fire) {
             // active a skill
             if (!Any_skill_running) {
 

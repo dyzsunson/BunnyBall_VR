@@ -72,7 +72,7 @@ public class Cannon : ShootController {
         else
             FireOneBullet(bullet, m_power);
 
-        this.transform.parent.GetComponent<Rabbit>().Fire();
+        this.transform.parent.GetComponent<EllicControlller>().Fire();
 
         return bullet;
     }

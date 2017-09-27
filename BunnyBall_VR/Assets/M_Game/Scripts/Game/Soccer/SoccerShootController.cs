@@ -79,7 +79,7 @@ public class SoccerShootController : ShootController {
         m_last_soccer = m_current_soccer;
         Invoke("LateFire", 0.6f);
 
-        this.transform.parent.GetComponent<Rabbit>().Fire();
+        this.transform.parent.GetComponent<EllicControlller>().Fire();
 
         GameObject soccer = m_current_soccer;
         m_current_soccer = null;

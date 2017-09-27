@@ -41,7 +41,7 @@ public class ScoreCalculation : MonoBehaviour {
     }
 
     protected void Calculate(int[] _scoreArray, string[] _names) {
-        string path_name = "BunnyBall_Data/Record/";
+        string path_name = "Ellic's Exercise Class_Data/Record/";
         string file_name = m_levelName + "_score.txt";
   
         if (!Directory.Exists(path_name)) {
