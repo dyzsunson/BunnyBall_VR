@@ -43,13 +43,13 @@ public class TouchInput : MonoBehaviour {
         }
 
         if (SceneController.context.Current_State == SceneController.SceneState.Preparing) {
-            if (OVRInput.GetUp(OVRInput.RawButton.A)) {
+            if (OVRInput.GetUp(OVRInput.RawButton.B)) {
                 SceneController.context.VR_Ready_Change();
 
                 this.TouchVibration(OVRInput.Controller.RTouch, m_vib_time, m_vid_power);
             }
 
-            if (OVRInput.GetUp(OVRInput.RawButton.B)) {
+            if (OVRInput.GetUp(OVRInput.RawButton.A)) {
                 SceneController.context.Start_SinglePlayer();
 
                 this.TouchVibration(OVRInput.Controller.RTouch, m_vib_time, m_vid_power);

@@ -12,7 +12,7 @@ public class CannonAI : RabbitAI {
         m_fire_wait_maxTime = 3.0f;
         m_fire_min = 0.35f;
         m_fire_max = 0.78f;
-        m_y_rotateRange = 8.0f;
+        m_y_rotateRange = 7.0f;
         Invoke("SpeedUp", 20.0f);
     }
 

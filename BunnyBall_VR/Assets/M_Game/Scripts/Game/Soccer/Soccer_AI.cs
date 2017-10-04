@@ -5,12 +5,12 @@ using UnityEngine;
 public class Soccer_AI : RabbitAI {
     protected override void Start() {
         base.Start();
-        m_fire_wait_minTime = 2.0f;
-        m_fire_wait_maxTime = 2.5f;
+        m_fire_wait_minTime = 1.0f;
+        m_fire_wait_maxTime = 1.5f;
 
         m_fire_min = 0.35f;
 
-        m_y_rotateRange = 20.0f;
+        m_y_rotateRange = 12.0f;
         m_x_rotateRange = 10.0f;
     }
 
@@ -46,7 +46,7 @@ public class Soccer_AI : RabbitAI {
         else if ((angle < 0.0f && IsLeftHold == true) || (angle > 0.0f && IsRightHold == true))
             t_max = 0.2f;
 
-        float curveTime = Random.Range(t_min, t_max); // Mathf.Abs(angle) / m_y_rotateRange * 2.0f
+        float curveTime = 0.85f * Random.Range(t_min, t_max); // Mathf.Abs(angle) / m_y_rotateRange * 2.0f
 
         Invoke("CurveEnd", Mathf.Min(curveTime, t));
         // Invoke("PowerEnd", t);

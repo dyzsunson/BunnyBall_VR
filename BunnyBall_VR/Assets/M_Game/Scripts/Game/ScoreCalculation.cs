@@ -78,7 +78,7 @@ public class ScoreCalculation : MonoBehaviour {
         for (int i = 0; i < _scoreArray.Length; i++) {
             if (isNew || _scoreArray[i] > int.Parse(lines[i + 1])) {
                 fileTxt += _scoreArray[i];
-                recordStr += "NEW!";
+                recordStr += "NEW RECORD!";
                 RecordText.transform.Find("Star" + i).gameObject.SetActive(true);
                 RecordTextVR.transform.Find("Star" + i).gameObject.SetActive(true);
                 
