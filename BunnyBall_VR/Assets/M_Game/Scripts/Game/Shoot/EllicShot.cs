@@ -11,6 +11,8 @@ public class EllicShot : EllicControlller {
     EllicTarget[] m_target_array;
     int m_num = 0;
 
+    public RabbitAI g_ai;
+
     protected override void Start() {
         // base.Start();
         m_hide_position = this.transform.Find("Hide_Position");
@@ -42,7 +44,8 @@ public class EllicShot : EllicControlller {
             return null;
 
         do {
-            num = Random.Range(0, m_targetPosition_array.Length);
+            
+            num = MRandom.context.GetNextRandom(0, m_targetPosition_array.Length, g_ai.is_from_file);
         } while (m_target_array[num] != null);
 
         m_num++;

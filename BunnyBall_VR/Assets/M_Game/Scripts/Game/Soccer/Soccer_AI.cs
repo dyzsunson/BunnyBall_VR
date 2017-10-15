@@ -19,12 +19,8 @@ public class Soccer_AI : RabbitAI {
         IsPowerButtonHold = true;
 
         float t;
-        if (is_from_file) {
-            t = power[m_current];
-        }
-        else {
-            t = 1.2f * GetFireTime();
-        }
+        
+        t = 1.2f * GetFireTime();
 
         float angle = SceneController.Ellic_Current.transform.rotation.eulerAngles.y;
         if (angle > 180.0f)
@@ -36,7 +32,7 @@ public class Soccer_AI : RabbitAI {
             IsRightHold = true;
         else if (angle > 5.0f)
             IsLeftHold = true;
-        else if (Random.Range(0.0f, 1.0f) < 0.5f)
+        else if (MRandom.context.GetNextRandom(0.0f, 1.0f, is_from_file) < 0.5f)
             IsLeftHold = true;
         else
             IsRightHold = true;
@@ -46,7 +42,7 @@ public class Soccer_AI : RabbitAI {
         else if ((angle < 0.0f && IsLeftHold == true) || (angle > 0.0f && IsRightHold == true))
             t_max = 0.2f;
 
-        float curveTime = 0.85f * Random.Range(t_min, t_max); // Mathf.Abs(angle) / m_y_rotateRange * 2.0f
+        float curveTime = 0.85f * MRandom.context.GetNextRandom(t_min, t_max, is_from_file); // Mathf.Abs(angle) / m_y_rotateRange * 2.0f
 
         Invoke("CurveEnd", Mathf.Min(curveTime, t));
         // Invoke("PowerEnd", t);

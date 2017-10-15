@@ -40,7 +40,31 @@ public class ScoreCalculation : MonoBehaviour {
 
     }
 
+    void UserStudyRecord(int[] _scoreArray, string[] _names) {
+        string user_path = "UserStudy/";
+
+        if (!Directory.Exists(user_path)) {
+            Directory.CreateDirectory(user_path);
+        }
+
+        string fileName = "" + IDInput.UserID + "_" + SceneController.Level_Current.LevelName + "_Score.txt";
+        string recordText = "";
+
+        for (int i = 0; i < _scoreArray.Length; i++) {
+            recordText += _names[i] + ": " + _scoreArray[i] + "\r\n";
+        }
+
+        if (!File.Exists(user_path + fileName)) {
+            File.Create(user_path + fileName).Dispose();
+        }
+
+        File.WriteAllText(user_path + fileName, recordText);
+    }
+
     protected void Calculate(int[] _scoreArray, string[] _names) {
+        UserStudyRecord(_scoreArray, _names);
+
+
         string path_name = "Ellic's Exercise Class_Data/Record/";
         string file_name = m_levelName + "_score.txt";
   

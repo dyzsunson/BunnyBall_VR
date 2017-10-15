@@ -86,7 +86,8 @@ public class SceneController : MonoBehaviour, Game_Process_Interface{
         context = this;
     }
 
-
+    // User Study
+    public UserStudyController g_userStudy;
 
     // Use this for initialization
     void Start () {
@@ -210,7 +211,7 @@ public class SceneController : MonoBehaviour, Game_Process_Interface{
     }
 
     public void ReStartScene() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("NewGameScene");
     }
 
     public void RestartGame(bool _is_single_player) {
@@ -278,6 +279,8 @@ public class SceneController : MonoBehaviour, Game_Process_Interface{
 
         this.levelList[s_currentLevel].GameReady();
         ResetCamera();
+
+        g_userStudy.GameReady();
     }
 
     public void GameStart() {
@@ -296,6 +299,8 @@ public class SceneController : MonoBehaviour, Game_Process_Interface{
 
         if (InputCtrl.context.Is_AI_Ctrl)
             SceneController.AI_Current.GameStart();
+
+        g_userStudy.GameStart();
     }
 
     public void GameEndBuffer() {
@@ -308,6 +313,8 @@ public class SceneController : MonoBehaviour, Game_Process_Interface{
         this.ui_controller.GameEndingBuffer();
 
         Invoke("GameEnd", this.levelList[s_currentLevel].EndingBufferTime);
+
+        g_userStudy.GameEndBuffer();
     }
 
     public void GameEnd() {
@@ -324,6 +331,8 @@ public class SceneController : MonoBehaviour, Game_Process_Interface{
         // score
         ScoreCalculate();
         this.GetComponent<AudioSource>().Play();
+
+        g_userStudy.GameEnd();
     }
     #endregion 
 

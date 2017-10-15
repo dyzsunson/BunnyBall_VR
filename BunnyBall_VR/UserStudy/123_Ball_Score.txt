@@ -1,0 +1,4 @@
+Cubes Remaining: 11
+Cubes Lost: 39
+Balls Fired: 48
+Balls Blocked: 8

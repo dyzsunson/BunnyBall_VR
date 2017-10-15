@@ -12,9 +12,7 @@ public class RabbitAI : MonoBehaviour {
     public bool IsPowerButtonUp;
 
     // from file
-    protected float[] array = { -10.0f, 10.0f, -10.0f, 10.0f, -10.0f, 10.0f, -10.0f, 10.0f, -10.0f, 10.0f, -10.0f, 10.0f, -10.0f, 10.0f, -10.0f, 10.0f };
-    protected float[] power = { 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f };
-    protected int m_current = 0;
+    public bool is_from_file = false;
 
     // rotate variable
     protected float m_rotate_a = 250.0f;
@@ -31,7 +29,6 @@ public class RabbitAI : MonoBehaviour {
     // private float m_y_max_speed = 50.0f;
 
     protected bool isWorking = false;
-    public bool is_from_file = false;
 
     // reloadTime
     protected float m_fire_wait_minTime = 0.1f;
@@ -51,12 +48,7 @@ public class RabbitAI : MonoBehaviour {
 
     // Use this for initialization
     protected virtual void Start() {
-        keyDownDictionary = new Dictionary<KeyCode, bool>();
-        foreach (KeyCode key in keyList) {
-            keyDownDictionary.Add(key, false);
-        }
-
-        m_skill_reloading_time = Random.Range(m_min_skill_time, m_max_skill_time);
+       
     }
 
     // Update is called once per frame
@@ -93,7 +85,8 @@ public class RabbitAI : MonoBehaviour {
         keyDownDictionary[keyList[m_current_skill]] = true;
         m_lastKey = keyList[m_current_skill];
 
-        m_skill_reloading_time = Random.Range(m_min_skill_time, m_max_skill_time);
+       
+        m_skill_reloading_time = MRandom.context.GetNextRandom(m_min_skill_time, m_max_skill_time, is_from_file);
     }
 
     public bool IsHotKeyDown(KeyCode key) {
@@ -108,12 +101,6 @@ public class RabbitAI : MonoBehaviour {
         if (!isWorking)
             return;
 
-        if (is_from_file) {
-            m_current++;
-            if (m_current >= array.Length)
-                return;
-        }
-
         float ty = RotateAroundY();
         float tx = RotateAroundX();
 
@@ -126,12 +113,9 @@ public class RabbitAI : MonoBehaviour {
             startDegree -= 360.0f;
 
         float endDegree = 0.0f;
-        if (is_from_file) {
-            endDegree = array[m_current];
-        }
-        else {
-            endDegree = Random.Range(-m_y_rotateRange, m_y_rotateRange);
-        }
+
+        endDegree = MRandom.context.GetNextRandom(-m_y_rotateRange, m_y_rotateRange, is_from_file);
+        
         float t = TimeRotateFromTo(startDegree, endDegree, m_max_speed, m_rotate_a);
         if (endDegree > startDegree)
             IsRightHold = true;
@@ -149,12 +133,9 @@ public class RabbitAI : MonoBehaviour {
             startDegree -= 360.0f;
 
         float endDegree = 0.0f;
-        if (is_from_file) {
-            endDegree = array[m_current];
-        }
-        else {
-            endDegree = Random.Range(-m_x_rotateRange, m_x_rotateRange);
-        }
+        
+        endDegree = MRandom.context.GetNextRandom(-m_x_rotateRange, m_x_rotateRange, is_from_file);
+
         float t = TimeRotateFromTo(startDegree, endDegree, m_max_speed, m_rotate_a);
 
         if (endDegree < startDegree)
@@ -192,13 +173,9 @@ public class RabbitAI : MonoBehaviour {
     }
 
     void WaitAfterRotate() {
-        if (is_from_file) {
-            SceneController.Ellic_Current.transform.rotation = Quaternion.Euler(new Vector3(0.0f, array[m_current], 0.0f));
-        }
-
         IsUpHold = IsDownHold = IsLeftHold = IsRightHold = false;
 
-        float t = Random.Range(m_rotate_wait_minTime, m_rotate_wait_maxTime);
+        float t = MRandom.context.GetNextRandom(m_rotate_wait_minTime, m_rotate_wait_maxTime, is_from_file);
         Invoke("Fire", t);
     }
 #endregion
@@ -208,12 +185,7 @@ public class RabbitAI : MonoBehaviour {
         IsPowerButtonHold = true;
 
         float t;
-        if (is_from_file) {
-            t = power[m_current];
-        }
-        else {
-            t = GetFireTime();
-        }
+        t = GetFireTime();
 
         Invoke("WaitAfterFire", t);
     }
@@ -238,20 +210,28 @@ public class RabbitAI : MonoBehaviour {
             low += 0.5f * diff * (degree) / 5.0f;
 
 
-        return Random.Range(low, high);
+        return MRandom.context.GetNextRandom(low, high, is_from_file);
     }
 
     void WaitAfterFire() {
         IsPowerButtonHold = false;
 
-        float t = Random.Range(m_fire_wait_minTime, m_fire_wait_maxTime);
+        float t = MRandom.context.GetNextRandom(m_fire_wait_minTime, m_fire_wait_maxTime, is_from_file);
         Invoke("RotateNext", t);
     }
 #endregion
 
     public void GameStart() {
+        MRandom.context.ResetFile("random_data.txt");
+
+        keyDownDictionary = new Dictionary<KeyCode, bool>();
+        foreach (KeyCode key in keyList) {
+            keyDownDictionary.Add(key, false);
+        }
+
+        m_skill_reloading_time = MRandom.context.GetNextRandom(m_min_skill_time, m_max_skill_time, is_from_file);
+            
         isWorking = true;
-        m_current = -1;
         RotateNext();
     }
 
